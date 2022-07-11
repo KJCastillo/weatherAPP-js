@@ -1,10 +1,11 @@
 const cityForm = document.querySelector("form");
 const card = document.querySelector(".card");
 const details = document.querySelector(".details");
+const time = document.querySelector("img.time");
+const icon = document.querySelector(".img icon");
 
 const updateUI = (data) => {
-  const cityDetails = data.cityDetails;
-  const weather = data.weather;
+  const { cityDetails, weather } = data;
 
   details.innerHTML = `
     <h5 class="my-3">${cityDetails.EnglishName}</h5>
@@ -15,10 +16,20 @@ const updateUI = (data) => {
     </div>
     `;
 
-    //remove d-none
-    if (card.classList.contains('d-none')){
-        card.classList.remove('d-none');
-    }
+  //update images
+  let timeSrc = null;
+  if (weather.IsDayTime){
+    timeSrc = 'img/day.svg'
+  } else {
+    timeSrc = 'img.night.svg'
+  }
+
+  time.setAttribute('src', timeSrc);
+
+  //remove d-none
+  if (card.classList.contains("d-none")) {
+    card.classList.remove("d-none");
+  }
 };
 
 const updateCity = async (city) => {
