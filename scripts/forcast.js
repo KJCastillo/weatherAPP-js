@@ -26,7 +26,7 @@ getCity("San Diego")
     return getWeather(data.Key);
   })
   .then((data) => {
-    console.log(data);
+    data;
   })
   .catch((err) => console.log(err));
 //must have .then since function is async and promise needs to be resolved
