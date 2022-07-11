@@ -1,2 +1,1 @@
-Weather App created with JavaScript
-AccuWeather API
+Weather App created with JavaScript & AccuWeather API
