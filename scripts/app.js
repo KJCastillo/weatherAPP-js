@@ -17,22 +17,22 @@ const updateUI = (data) => {
     `;
 
   //update images
-//   const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
-//   icon.setAttribute('src', iconSrc);
+  //const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
+  //icon.setAttribute('src', iconSrc);
 
   let timeSrc = null;
-  if (weather.IsDayTime){
-    timeSrc = 'img/day.svg'
+  if (weather.IsDayTime) {
+    timeSrc = "img/day.svg";
   } else {
-    timeSrc = 'img.night.svg'
+    timeSrc = "img/night.svg";
   }
 
-  time.setAttribute('src', timeSrc);
+  time.setAttribute("src", timeSrc);
 
-  //remove d-none
   if (card.classList.contains("d-none")) {
     card.classList.remove("d-none");
   }
+  //remove d-none
 };
 
 const updateCity = async (city) => {
@@ -57,4 +57,16 @@ cityForm.addEventListener("submit", (e) => {
     .then((data) => updateUI(data))
     .catch((err) => console.log(err));
   //update the ui with new city
+
+  localStorage.setItem("city", city);
+  //setlocalstorage
 });
+
+if (localStorage.getItem("city")) {
+  updateCity(localStorage.getItem("city"))
+    .then((data) => updateUI(data))
+    .catch((err) => console.log(err));
+}
+//checks local storage for city and updates UI if true
+//run updateCity() and that returns a promise
+//after promise updateUI() with data
